@@ -1,0 +1,91 @@
+@import "/home/bhuv/.cache/wal/colors-waybar.css";
+@import "barmedia.css";
+
+* {
+    all: unset;
+}
+
+#center-box {
+    border-radius: 8px;
+    background-color: @background;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+#time {
+    font-family: JetBrainsMono NF;
+    font-size: 14px;
+}
+
+#workspaces {
+    margin: 5px;
+    padding: 5px;
+    background-color: @background;
+    border-radius: 8px;
+    border: 1px solid rgba(100,100,100, 0.5);
+    transition: background-color 0.5s;
+}
+
+#workspaces > button {
+    min-width: 15px;
+    background-color: rgba(100,100,100, 0.5);
+    border-radius: 10px;
+    padding: 3px;
+    margin: 2px;
+    font-family: Bricolage Grotesque;
+    border: 1px solid  rgba(100,100,100, 0.5);
+    
+}
+
+#workspaces>button.active {
+    background-color: #cba6f7;
+    color: #11111b;
+}
+
+#workspaces>button.empty {
+    background-color: #313244;
+}
+
+#left-box {
+    min-height: 35px;
+    background-color: @background;
+    margin: 5px;
+    margin-bottom: 0px;
+    border-radius: 8px;    
+}
+
+#hyprland-window {
+    font-family: Bricolage Grotesque;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+#window-box {
+    margin-right: 10px;
+    padding: 5px;
+    min-width: 80px;
+}
+
+#right-box {
+    background-color: @background;
+    border-radius: 8px;
+    padding: 5px;
+    margin-right: 5px;
+    margin-top: 5px
+}
+
+#sys-stats {
+    all: unset;
+    border: 1px solid rgba(100,100,100, 0.5);
+    background-color: @background;
+    min-height: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 2px;
+    margin-right: 0px;
+    margin-left: 10px;
+}
+
+#sys-stats > trough > progress {
+    background-color: antiquewhite;
+}

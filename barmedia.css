@@ -1,0 +1,69 @@
+@import "/home/bhuv/.cache/wal/colors-waybar.css";
+
+* {
+    all: unset;
+}
+
+#main-box{
+    margin-top: 5px;
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 5px;
+    border-radius: 8px;
+    background-color: @color0;
+    min-width: 200px;
+    border: 1px solid rgb(50, 50, 50);
+}
+
+#bar-media-label {
+    font-family: Bricolage Grotesque;
+    font-size: 15px;
+    margin: 5px;
+}
+
+progressbar {
+    background-color: @color0;
+    color: @color15;
+    margin-left: 5px;
+    min-width: 220px;
+    border-radius: 5px;
+    border: 1px solid rgb(50, 50, 50);
+}
+
+progressbar > trough > progress {
+    background-color: @color15;
+    border-radius: 2px;
+}
+
+#media-cover {
+    min-height: 35px;
+    min-width: 35px;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid rgba(50, 50, 50, 0.5);
+    border-radius: 5px;
+}
+
+#cover-box {
+    min-height: 35px;
+    min-width: 35px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    background-size: cover;
+    background-position: center;
+}
+
+#status-icon {
+    font-size: 30px;
+    color: rgba(200, 200, 200, 0);
+    margin-right: 10px;
+    font-family: JetBrainsMono NF;
+    transition: color 0.5s;
+    min-width: 35px;
+    min-height: 35px;
+}
+
+#status-icon:hover {
+    color: rgba(200, 200, 200, 1);
+}
