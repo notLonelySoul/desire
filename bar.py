@@ -120,7 +120,6 @@ class Bar(Window):
         self.bar = CenterBox(
             start_children = [
                 self.left,
-                BarMedia()
             ],
             center_children = [
                 self.center,

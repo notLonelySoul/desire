@@ -26,9 +26,6 @@ class BarMedia(Box):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
 
-        # defining shit.
-        self.arturl = None
-
         self.mainbox = Box(
             name="main-box",
             v_align='center'
@@ -57,7 +54,7 @@ class BarMedia(Box):
             name="cover-box",
             children=[
                 Overlay(
-                    children=Box(name="media-cover", style=f"background-image: url('idklol')"),
+                    children=Box(name="media-cover"),
                     overlays=[
                         self.icon_button,
                     ],
