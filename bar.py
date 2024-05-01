@@ -35,7 +35,6 @@ class Bar(Window):
             all_visible=False, 
         )
 
-
         self.datebox = Box(
             name="date-box",
             children=[

@@ -72,12 +72,13 @@ class BarMedia(Box):
 
         self.mainbox.add_children([self.song_cover, self.sub_box])
         self.add_children(self.mainbox)
-                        
     
     def set_info(self,_, data:str):
         title, artist, pos, length, status = data.split(',,')
         self.song_info.set_label(format_song_name(f'{title} • {artist}', 30))
-        self.song_prog.set_fraction(float(pos)/float(length)) if float(length) != 0 else self.song_prog.set_fraction(0)
+        try: 
+            self.song_prog.set_fraction(float(pos)/float(length))
+        except Exception as e: logger.info(e)
 
         sd = {
             "Playing" : "",
@@ -88,11 +89,11 @@ class BarMedia(Box):
         self.icon_button.set_label(sd[status])
 
     def set_cover(self,_, data:str):  # fix by Gummy Bear for asynchronous image fetching... 
-        print(get_relative_path("cover.png"))
+        print(get_relative_path("/home/bhuv/.cache/cover.png"))
         Gio.File.new_for_uri(uri=data).copy_async(
-            destination=Gio.File.new_for_path(get_relative_path("cover.png")),
+            destination=Gio.File.new_for_path(get_relative_path("/home/bhuv/.cache/cover.png")),
             flags=Gio.FileCopyFlags.OVERWRITE,
-            io_priority=GLib.PRIORITY_DEFAULT,
+            io_priority=GLib.PRIORITY_HIGH,
             cancellable=None,
             progress_callback=None,
             callback=self.img_ready,
@@ -102,6 +103,6 @@ class BarMedia(Box):
         try:
             os.path.isfile(get_relative_path("cover.png"))
             source.copy_finish(res)
-            self.song_cover.set_style("background-image: url('cover.png');")
+            self.song_cover.set_style("background-image: url('/home/bhuv/.cache/cover.png');")
         except ValueError as e:
             logger.info(e)

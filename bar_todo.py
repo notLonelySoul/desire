@@ -20,7 +20,7 @@ class BarToDo(Box):
             background_color=False,
             radius_color=False,
             pie=True,
-            size=(30, 30), 
+            size=(30, 30),
             percentage=10,
         )
 
