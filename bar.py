@@ -17,6 +17,7 @@ from fabric.utils.fabricator import Fabricator
 from fabric.utils import set_stylesheet_from_file, invoke_repeater
 
 from bar_media import BarMedia
+from bar_todo import BarToDo
 from my_utils import *
 
 connection = Hyprland()
@@ -120,6 +121,7 @@ class Bar(Window):
         self.bar = CenterBox(
             start_children = [
                 self.left,
+                BarMedia(),
             ],
             center_children = [
                 self.center,
@@ -157,7 +159,7 @@ class Bar(Window):
         return
     
     def update_sys_info(self):
-        self.cpu_bar.set_fraction(psutil.cpu_percent(interval=1)/100)
+        self.cpu_bar.set_fraction(psutil.cpu_percent()/100)
         self.ram_bar.set_fraction(psutil.virtual_memory().percent/100)
         return True
 
@@ -165,4 +167,4 @@ if __name__ == "__main__":
     win = Bar()
     win.apply_styles()
 
-    fabric.start()
+    fabric.start(open_client=False)

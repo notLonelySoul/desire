@@ -17,6 +17,9 @@ class BarToDo(Box):
 
         self.progress = CircularProgressBar(
             name="bar-todo-progress",
+            background_color=False,
+            radius_color=False,
+            pie=True,
             size=(30, 30), 
             percentage=10,
         )
