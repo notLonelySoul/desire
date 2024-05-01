@@ -166,4 +166,4 @@ if __name__ == "__main__":
     win = Bar()
     win.apply_styles()
 
-    fabric.start(open_client=False)
+    fabric.start()
