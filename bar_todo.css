@@ -1,0 +1,51 @@
+@import "/home/bhuv/.cache/wal/colors-waybar.css";
+
+#bar-todo-progress {
+    border: 1px solid rgb(50, 50, 50);
+    background-color: #585b70;
+}
+
+#bar-todo-box {
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid rgb(50, 50, 50);
+    border-radius: 8px;
+    background-color: @background;
+    min-width: 250px;
+}
+
+#bar-task-label-button {
+    padding: 5px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border: 1px solid rgba(100, 100, 100, 0.5);
+    font-family: Bricolage Grotesque;
+    font-size: 14px;
+    min-width: 160px;
+
+    background-color: @background;
+    border-radius: 9px;
+    transition: background-color 0.5s;
+    border-radius: 9px;
+    margin-left: 10px;
+}
+
+#bar-task-label-button:hover {
+    background-color: rgba(100, 100, 100, 0.5);
+}
+
+#bar-task-done-button {
+    margin-left: 5px;
+    border: 1px solid rgba(100, 100, 100, 0.5);
+    font-size: 20px;
+    color: rgb(200, 200, 200);
+    border-radius: 8px;
+    padding: 5px;
+    padding-right: 10px;
+    transition: background-color 0.3s;
+    background-color: @background;
+}
+
+#bar-task-done-button:hover {
+    background-color: rgba(100, 100, 100, 0.5);
+}

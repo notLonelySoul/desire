@@ -1,5 +1,6 @@
 @import "/home/bhuv/.cache/wal/colors-waybar.css";
 @import "barmedia.css";
+@import "bar_todo.css";
 
 * {
     all: unset;
@@ -7,7 +8,7 @@
 
 #center-box {
     border-radius: 8px;
-    background-color: @background;
+    background-color: #0d0d0f;
     padding: 10px;
     margin-top: 5px;
 }
@@ -20,7 +21,7 @@
 #workspaces {
     margin: 5px;
     padding: 5px;
-    background-color: @background;
+    background-color: #0d0d0f;
     border-radius: 8px;
     border: 1px solid rgba(100,100,100, 0.5);
     transition: background-color 0.5s;
@@ -48,7 +49,7 @@
 
 #left-box {
     min-height: 35px;
-    background-color: @background;
+    background-color: #0d0d0f;
     margin: 5px;
     margin-bottom: 0px;
     border-radius: 8px;    
@@ -57,27 +58,27 @@
 #hyprland-window {
     font-family: Bricolage Grotesque;
     font-size: 15px;
-    margin-left: 10px;
+    margin: 10px;
 }
 
 #window-box {
-    margin-right: 10px;
     padding: 5px;
     min-width: 80px;
 }
 
 #right-box {
-    background-color: @background;
+    border: 1px solid rgba(100,100,100, 0.5);
+    background-color: #0d0d0f;
     border-radius: 8px;
     padding: 5px;
     margin-right: 5px;
-    margin-top: 5px
+
 }
 
 #sys-stats {
     all: unset;
     border: 1px solid rgba(100,100,100, 0.5);
-    background-color: @background;
+    background-color: #0d0d0f;
     min-height: 5px;
     border-radius: 5px;
     padding: 5px;
@@ -88,4 +89,52 @@
 
 #sys-stats > trough > progress {
     background-color: antiquewhite;
+}
+
+#system-tray {
+    border-radius: 5px;
+    background-color: #0d0d0f;
+}
+
+#system-tray>button {
+    padding: 4px;
+    margin-left: 5px;
+    margin-right: 2px;
+    border: 1px solid rgba(100,100,100, 0.5);
+    border-radius: 5px;
+}
+
+#system-tray>button:hover  {
+    background-color: rgba(100,100,100, 0.5);
+}
+
+menu {
+    border: 1px solid rgba(100,100,100, 0.5);
+    background: #0d0d0f;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+menu > menuitem {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+menu > menuitem:first-child {
+    margin-top: 1.5px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+menu > menuitem:last-child {
+    margin-bottom: 1.5px;
+    border-radius: 0px 0px 5px 5px;
+}
+
+menu > menuitem:hover {
+    background-color: rgba(100,100,100, 0.5);
+}
+
+#volume-circular-progress-bar {
+    color: #11111b;
+    border: 1px solid #cba6f7;
 }

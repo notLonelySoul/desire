@@ -18,6 +18,7 @@ from fabric.utils import exec_shell_command_async
 
 
 from fabric.utils import set_stylesheet_from_file, get_relative_path
+from usr_data import *
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, GLib, Gio
@@ -40,6 +41,7 @@ class BarMedia(Box):
         self.song_info = Label(
             label="nothing playing...",
             name='bar-media-label',
+            h_expand=False,
         )
 
         self.song_prog = Gtk.ProgressBar(
@@ -89,9 +91,9 @@ class BarMedia(Box):
         self.icon_button.set_label(sd[status])
 
     def set_cover(self,_, data:str):  # fix by Gummy Bear for asynchronous image fetching... 
-        print(get_relative_path("/home/bhuv/.cache/cover.png"))
+        print(get_relative_path(f"{CONF_CACHE_DIR}/cover.png"))
         Gio.File.new_for_uri(uri=data).copy_async(
-            destination=Gio.File.new_for_path(get_relative_path("/home/bhuv/.cache/cover.png")),
+            destination=Gio.File.new_for_path(get_relative_path(f"{CONF_CACHE_DIR}/cover.png")),
             flags=Gio.FileCopyFlags.OVERWRITE,
             io_priority=GLib.PRIORITY_HIGH,
             cancellable=None,
@@ -101,8 +103,8 @@ class BarMedia(Box):
         
     def img_ready(self, source, res):
         try:
-            os.path.isfile(get_relative_path("cover.png"))
+            os.path.isfile(get_relative_path(f"{CONF_CACHE_DIR}/cover.png"))
             source.copy_finish(res)
-            self.song_cover.set_style("background-image: url('/home/bhuv/.cache/cover.png');")
+            self.song_cover.set_style(f"background-image: url('{CONF_CACHE_DIR}/cover.png');")
         except ValueError as e:
             logger.info(e)

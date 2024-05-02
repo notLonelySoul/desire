@@ -15,13 +15,30 @@ class BarToDo(Box):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
+        self.task_progress = 0
+
+        self.mainbox = Box(name="bar-todo-box")
+
         self.progress = CircularProgressBar(
             name="bar-todo-progress",
-            background_color=False,
             radius_color=False,
             pie=True,
             size=(30, 30),
             percentage=10,
+            tooltip_text=f"progress: {self.task_progress}"
         )
 
-        self.add(self.progress)
+        self.task = Button(
+            name="bar-task-label-button",
+            label="no tasks yet...",
+        )
+        
+        self.task_done_button = Button(
+            name="bar-task-done-button",
+            label="",
+            v_expand=False,
+        )
+        
+        self.mainbox.add_children([self.progress, self.task, self.task_done_button])
+
+        self.add_children([self.mainbox,])

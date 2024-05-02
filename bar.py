@@ -10,6 +10,7 @@ from fabric.widgets.box import Box
 from fabric.widgets.label import Label
 from fabric.widgets.centerbox import CenterBox
 from fabric.widgets.date_time import DateTime
+from fabric.system_tray.widgets import SystemTray
 from fabric.utils.string_formatter import FormattedString
 from fabric.hyprland.widgets import ActiveWindow, Workspaces, WorkspaceButton
 from fabric.hyprland.service import Hyprland, HyprlandEvent
@@ -19,6 +20,8 @@ from fabric.utils import set_stylesheet_from_file, invoke_repeater
 from bar_media import BarMedia
 from bar_todo import BarToDo
 from my_utils import *
+from volumewidget import VolumeWidget
+import overrides
 
 connection = Hyprland()
 
@@ -48,6 +51,7 @@ class Bar(Window):
         )
 
         # Left shit...
+        ActiveWindow.on_activewindow = overrides.on_activewindow
         self.active_window = ActiveWindow(
             formatter=FormattedString(
                 "{test_title(win_class)}",
@@ -109,10 +113,13 @@ class Bar(Window):
             children=[self.cpu_pc, self.ram_pc]
         )
 
+        self.sys_tray = SystemTray(name="system-tray")
+        
         self.right = Box(
             name="right-box",
             children=[
-                self.sys_info,
+                VolumeWidget(),
+                self.sys_tray,
             ],
             v_align='center',
         )
@@ -126,14 +133,13 @@ class Bar(Window):
                 self.center,
             ],
             end_children= [
-                self.right,
+                BarToDo(),
+                self.right
             ]
         )
-        
+
         self.add(self.bar)
         self.show_all()
-
-        invoke_repeater_threaded(1000, lambda *args: self.update_sys_info())
 
     def apply_styles(*args):
         logger.info("[Bar] Applied Styles...")
@@ -166,4 +172,4 @@ if __name__ == "__main__":
     win = Bar()
     win.apply_styles()
 
-    fabric.start(open_client=False)
+    fabric.start()
